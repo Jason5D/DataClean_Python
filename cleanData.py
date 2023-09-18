@@ -116,9 +116,15 @@ transactions_clean = []
 for transaction in daily_transactions_split:
     cleaned_transactions = [tran.strip() for tran in transaction]
     transactions_clean.append(cleaned_transactions)
-print(transactions_clean)
+# print(transactions_clean)
 customers = []
 sales = []
 thread_sold = [] 
-# for i in transactions_clean:
+for i in transactions_clean:
+    customers.append(i[0])
+    sales.append(i[1])
+    thread_sold.append(i[3])
+print(customers)
+print(sales)
+print(thread_sold)
     
