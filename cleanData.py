@@ -123,8 +123,13 @@ thread_sold = []
 for i in transactions_clean:
     customers.append(i[0])
     sales.append(i[1])
-    thread_sold.append(i[3])
-print(customers)
-print(sales)
-print(thread_sold)
-    
+    thread_sold.append(i[2])
+# print(customers)
+# print(sales)
+# print(thread_sold)
+total_sales = 0
+for sale in sales:
+    remove = sale.strip("$")
+    amount = float(remove)
+    total_sales += amount
+print(total_sales)
