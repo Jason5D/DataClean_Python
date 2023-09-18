@@ -1,3 +1,4 @@
+# Data
 daily_sales = """Edith Mcbride   ;,;$1.21   ;,;   white ;,; 
 09/15/17   ,Herbert Tran   ;,;   $7.29;,; 
 white&blue;,;   09/15/17 ,Paul Clarke ;,;$12.52 
@@ -104,19 +105,24 @@ green&white;,;09/15/17,   Gail Phelps   ;,;$30.52
 ;,; green&white&blue   ;,; 09/15/17 , Myrtle Morris 
 ;,;   $22.66   ;,; green&white&blue;,;09/15/17"""
 
+# Remove unnecessary symbols
 daily_sales_replaced = daily_sales.replace(";,;", ":")
-# print(daily_sales_replaced)
+
+# Seperate the different transactions
 daily_transactions = daily_sales_replaced.split(",")
-# print(daily_transactions)
+
+# Create a list of the split transactions
 daily_transactions_split = []
 for transactions in daily_transactions:
     daily_transactions_split.append(transactions.split(":")) 
-# print(daily_transactions_split)
+
+# Clean the seperate transactions
 transactions_clean = []
 for transaction in daily_transactions_split:
     cleaned_transactions = [tran.strip() for tran in transaction]
     transactions_clean.append(cleaned_transactions)
-# print(transactions_clean)
+
+# Seperate out the data types
 customers = []
 sales = []
 thread_sold = [] 
@@ -124,32 +130,35 @@ for i in transactions_clean:
     customers.append(i[0])
     sales.append(i[1])
     thread_sold.append(i[2])
-# print(customers)
-# print(sales)
-# print(thread_sold)
+
+# Calculate total amount of sales
 total_sales = 0
 for sale in sales:
     remove = sale.strip("$")
     amount = float(remove)
     total_sales += amount
-# print(total_sales)
+
+# Seperate colors into individual colors 
 thread_sold_split = []
 for item in thread_sold:
     if len(item) <= 6:
         thread_sold_split.append(item)
     else:
         split_colours = item.split("&")
-        # print(split_colours)
         for colour in split_colours:
             thread_sold_split.append(colour)
-# print(thread_sold_split)
+
+# Function to count number of each color 
 def color_count(color):
     count = 0
     for item in thread_sold_split:
         if item == color:
             count += 1
     return count
-# print(color_count("white"))
+
+# Print the analysed data
 colors = ['red', 'yellow', 'green', 'white', 'black', 'blue', 'purple']
 for color in colors:
-    print("Thread Shed sold {} threads of {} today.".format(color_count(color), color))
+    print("Thread Shed sold {} threads of {} today.".format(color_count(color), color, round(total_sales)))
+print("So {} threads were sold in total.".format(len(thread_sold_split)))
+print("Which made £{} in sales.".format(round(total_sales)))
