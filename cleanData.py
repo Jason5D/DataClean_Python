@@ -142,4 +142,14 @@ for item in thread_sold:
         # print(split_colours)
         for colour in split_colours:
             thread_sold_split.append(colour)
-print(thread_sold_split) 
+# print(thread_sold_split)
+def color_count(color):
+    count = 0
+    for item in thread_sold_split:
+        if item == color:
+            count += 1
+    return count
+# print(color_count("white"))
+colors = ['red', 'yellow', 'green', 'white', 'black', 'blue', 'purple']
+for color in colors:
+    print("Thread Shed sold {} threads of {} today.".format(color_count(color), color))
