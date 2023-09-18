@@ -132,4 +132,14 @@ for sale in sales:
     remove = sale.strip("$")
     amount = float(remove)
     total_sales += amount
-print(total_sales)
+# print(total_sales)
+thread_sold_split = []
+for item in thread_sold:
+    if len(item) <= 6:
+        thread_sold_split.append(item)
+    else:
+        split_colours = item.split("&")
+        # print(split_colours)
+        for colour in split_colours:
+            thread_sold_split.append(colour)
+print(thread_sold_split) 
