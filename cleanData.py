@@ -114,7 +114,7 @@ daily_transactions = daily_sales_replaced.split(",")
 # Create a list of the split transactions
 daily_transactions_split = []
 for transactions in daily_transactions:
-    daily_transactions_split.append(transactions.split(":")) 
+    daily_transactions_split.append(transactions.split(":"))
 
 # Clean the seperate transactions
 transactions_clean = []
@@ -125,12 +125,12 @@ for transaction in daily_transactions_split:
 # Seperate out the data types
 customers = []
 sales = []
-thread_sold = [] 
+thread_sold = []
 for i in transactions_clean:
     customers.append(i[0])
     sales.append(i[1])
     thread_sold.append(i[2])
-
+    
 # Calculate total amount of sales
 total_sales = 0
 for sale in sales:
@@ -138,7 +138,7 @@ for sale in sales:
     amount = float(remove)
     total_sales += amount
 
-# Seperate colors into individual colors 
+# Seperate colors into individual colors
 thread_sold_split = []
 for item in thread_sold:
     if len(item) <= 6:
@@ -148,7 +148,11 @@ for item in thread_sold:
         for colour in split_colours:
             thread_sold_split.append(colour)
 
-# Function to count number of each color 
+def date_count():
+    count = 0
+    for date in date_purchased
+
+#  Function to count number of each color
 def color_count(color):
     count = 0
     for item in thread_sold_split:
@@ -156,9 +160,14 @@ def color_count(color):
             count += 1
     return count
 
+
 # Print the analysed data
-colors = ['red', 'yellow', 'green', 'white', 'black', 'blue', 'purple']
+colors = ["red", "yellow", "green", "white", "black", "blue", "purple"]
 for color in colors:
-    print("Thread Shed sold {} threads of {} today.".format(color_count(color), color, round(total_sales)))
+    print(
+        "Thread Shed sold {} threads of {} today.".format(
+            color_count(color), color, round(total_sales)
+        )
+    )
 print("So {} threads were sold in total.".format(len(thread_sold_split)))
 print("Which made £{} in sales.".format(round(total_sales)))
